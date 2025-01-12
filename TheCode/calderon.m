@@ -11,7 +11,7 @@ U = ones(size(coordinates,1),1);
 U(unique(dirichlet)) = u_d(coordinates(unique(dirichlet),:));
 
 % Newton-Raphson iteration
-for i=1:1000
+for i=1:100
   
   % Assembly of DJ(U)
   A = sparse(size(coordinates,1),size(coordinates,1));
