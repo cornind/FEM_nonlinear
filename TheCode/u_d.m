@@ -15,5 +15,5 @@ function DirichletBoundaryValue = u_d(x)
 %    implementation"
 
 theta = angle(x(:,1)+x(:,2)*1i);
-DirichletBoundaryValue = sin(2*theta);
+DirichletBoundaryValue = sin(4*theta);
 % DirichletBoundaryValue =  1-abs(x(:,1));

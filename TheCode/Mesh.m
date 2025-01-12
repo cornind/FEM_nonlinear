@@ -1,4 +1,7 @@
-pgon = polyshape( [-1 -1 1 1] , [1 -1 -1 1] );
+th = (pi/12:pi/12:2*pi) ;
+x1 =  cos(th)  ;
+y1 = sin(th);
+pgon = polyshape( x1, y1 );
 
 tr = triangulation(pgon);
 
@@ -13,9 +16,9 @@ geometryFromMesh(model,tnodes,telements);
 mesh=generateMesh(model,'GeometricOrder','linear','Hmax',0.05);
 
 
-Ne = findNodes(mesh,'region','Edge',1:4);
+Ne = findNodes(mesh,'region','Edge',1);
 % figure
-% pdemesh(model,'NodeLabels','on')
+% pdegplot(model,'FaceLabels','on','EdgeLabels','on')
 % hold on
 % plot(mesh.Nodes(1,Ne ),mesh.Nodes(2,Ne ),'or','MarkerFaceColor','g')
 
