@@ -47,7 +47,7 @@ udp = strrep(udp,'U1','U(1)');
 udp = strrep(udp,'U2','U(2)');
 udp = strrep(udp,'U3','U(3)');
 
-A = [6,1.5,1,1,1,1];% the polynomial coefficients
+A = [6,1.5,1.4,1.3,1.2,1.1];% the polynomial coefficients
 for i = 1 : n+1
    ud = strrep(ud,['a',int2str(i-1)],num2str(A(i)));
    udp = strrep(udp,['a',int2str(i-1)],num2str(A(i)));
