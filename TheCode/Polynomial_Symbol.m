@@ -5,7 +5,10 @@ cor3 = [cor3_1 cor3_2];
 cor = [cor1;cor2;cor3];
 Area = det([ones(1,3);cor'])/2;
 
-
+n = 5;
+for i = 1:n
+    syms(['a',int2str(i)]);
+end
 
 f_1 = 1-x-y;
 f_2 = x;
@@ -13,9 +16,14 @@ f_3 = y;
 
 u = U1*f_1+U2*f_2+U3*f_3;
 
-d=3;
+d=1;
 % ud = u^d*[f_1;f_2;f_3];
-ud = u^d;
+syms('a0')
+ud = a0;
+for i = 1:n
+    eval(['ud = ud + (u^ i)* a',int2str(i),';'])
+end
+% ud = u^d;
 ud=expand(ud);
 ud = collect(ud,[x y]);
 ud =int(ud,y,[0,1-x]);
@@ -25,7 +33,11 @@ ud = strrep(ud,'U1','U(1)');
 ud = strrep(ud,'U2','U(2)');
 ud = strrep(ud,'U3','U(3)');
 
-udp = d*u^{d-1}*[f_1 f_2 f_3];
+udp=0;
+for i = 1:n
+    eval(['udp = udp + i*(u^ (i-1))* a',int2str(i),';']);
+end
+udp = udp*[f_1 f_2 f_3];
 udp=expand(udp);
 udp = collect(udp,[x y]);
 udp =int(udp,y,[0,1-x]);
@@ -34,5 +46,11 @@ udp = char(udp);
 udp = strrep(udp,'U1','U(1)');
 udp = strrep(udp,'U2','U(2)');
 udp = strrep(udp,'U3','U(3)');
+
+A = [1,1,1,1,1,1];
+for i = 1 : n+1
+   ud = strrep(ud,['a',int2str(i-1)],num2str(A(i)));
+   udp = strrep(udp,['a',int2str(i-1)],num2str(A(i)));
+end
 
 
