@@ -1,8 +1,12 @@
 Polynomial_Symbol
-load coordinates.dat; coordinates(:,1)=[];
-load elements3.dat; elements3(:,1)=[];
+Mesh
+% load coordinates.dat; coordinates(:,1)=[];
+coordinates = p;
+% load elements3.dat; elements3(:,1)=[];
+elements3 = elem;
 eval('load neumann.dat; neumann(:,1) = [];','neumann=[];');
-load dirichlet.dat; dirichlet(:,1) = [];
+% load dirichlet.dat; dirichlet(:,1) = [];
+dirichlet = Ne;
 FreeNodes=setdiff(1:size(coordinates,1),unique(dirichlet));
 
 % Initial value
@@ -11,7 +15,7 @@ U = ones(size(coordinates,1),1);
 U(unique(dirichlet)) = u_d(coordinates(unique(dirichlet),:));
 
 % Newton-Raphson iteration
-for i=1:100
+for i=1:1000
   
   % Assembly of DJ(U)
   A = sparse(size(coordinates,1),size(coordinates,1));

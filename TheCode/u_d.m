@@ -14,4 +14,6 @@ function DirichletBoundaryValue = u_d(x)
 %    "Remarks around 50 lines of Matlab: Short finite element 
 %    implementation"
 
-DirichletBoundaryValue =  1-abs(x(:,1));
+theta = angle(x(:,1)+x(:,2)*1i);
+DirichletBoundaryValue = sin(2*theta);
+% DirichletBoundaryValue =  1-abs(x(:,1));
