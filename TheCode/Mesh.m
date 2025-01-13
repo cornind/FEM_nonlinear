@@ -1,4 +1,4 @@
-th = (pi/12:pi/12:2*pi) ;
+th = (pi/24:pi/24:2*pi) ;
 x1 =  cos(th)  ;
 y1 = sin(th);
 pgon = polyshape( x1, y1 );
